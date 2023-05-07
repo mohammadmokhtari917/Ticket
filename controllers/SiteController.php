@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Users;
 
 class SiteController extends Controller
 {
@@ -76,6 +77,7 @@ class SiteController extends Controller
         }
 
         $model = new LoginForm();
+
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }
@@ -84,6 +86,38 @@ class SiteController extends Controller
         return $this->render('login', [
             'model' => $model,
         ]);
+    }
+
+
+    public function actionSignup()
+    {
+        $model = new Users();
+        $erorr='';
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post())) {
+                if($model->password[0]&&$model->password[1]){
+                    if($model->password[0]==$model->password[1]){
+                        $model->save();
+                        $user = new LoginForm();
+                        $user->username = $model->phone;
+                        $user->password = $model->password;
+                        $user->login();
+                        return $this->goBack();
+                    }
+                }
+                $erorr='گذرواژه ها را صحیح وارد کنید';
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+        $model->date = date('Y-m-d');
+        $model->status = 1;
+        return $this->render('signup', [
+            'model' => $model,
+            'erorr' => $erorr,
+        ]);
+
     }
 
     /**

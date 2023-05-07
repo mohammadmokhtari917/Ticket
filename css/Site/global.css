@@ -1,0 +1,13 @@
+body {
+    direction: rtl;
+    text-align: right;
+    font-size: 16px;
+    color: #000000;
+    font-weight: 600;
+    background: hwb(51 84% 2%);
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+}

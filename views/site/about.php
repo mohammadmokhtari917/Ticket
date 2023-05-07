@@ -3,16 +3,17 @@
 /** @var yii\web\View $this */
 
 use yii\helpers\Html;
+use app\models\Details;
+$details=Details::findOne(1);
 
-$this->title = 'About';
+$this->title = 'درباره ما';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        This is the About page. You may modify the following file to customize its content:
+        <?= $details->description ?>
     </p>
 
-    <code><?= __FILE__ ?></code>
 </div>
