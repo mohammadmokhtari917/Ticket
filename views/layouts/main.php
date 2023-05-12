@@ -34,7 +34,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <header id="header">
     <?php
     NavBar::begin([
-        'brandLabel' => Html::img('/ticket/css/Site/Image/logo.png', ['alt' => $details->name,'class' => 'img-logo']),
+        'brandLabel' => Html::img('@web/css/Site/Image/logo.png', ['alt' => $details->name,'class' => 'img-logo']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
     ]);
@@ -54,6 +54,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             Yii::$app->user->isGuest
             ? ['label' => 'ثبت نام', 'url' => ['/site/signup']]
             : '<li class="nav-item">'
+            . Html::beginForm(['/site/dashboard'])
+            . Html::submitButton(
+                'پنل مدیریت',
+                ['class' => 'nav-link btn btn-link logout']
+            )
             . '</li>'
         ]
     ]);
