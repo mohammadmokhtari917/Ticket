@@ -8,9 +8,9 @@ $this->title = $details->name;
 <div class="site-index">
 
     <div class="jumbotron text-center bg-transparent">
-        <h1 class="">تیکت</h1>
+        <h1 class="">پنل ادمین</h1>
 
-        <p class="lead">مشکلات و خواسته های خود را باما در میان  بگذارید</p>
+        <p class="lead">سایت خود را شخصی سازی  کنید</p>
     </div>
 
     <div class="body-content">
